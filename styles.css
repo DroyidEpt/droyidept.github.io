@@ -1,0 +1,105 @@
+/* Стили для фона */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+h1, p, button, .social-link {
+    opacity: 0;
+    animation: fadeIn 3s ease forwards;
+}
+
+#container {
+    text-align: center;
+}
+
+/* Кнопка "Ок" */
+button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+}
+
+/* Стили для контейнера about-me */
+#about-me {
+    display: none;
+    text-align: center;
+    animation: fadeIn 3s ease forwards;
+}
+
+.social-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* При наведении курсора меняем стиль ссылок */
+.social-link:hover {
+    background-color: darkblue;
+}
+
+/* Стили для вращающейся иконки */
+.icon {
+    width: 128px;
+    height: 128px;
+    background-image: url('images/logos/logo.png');
+    background-size: cover;
+    animation: rotate 2s linear infinite;
+    cursor: pointer;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url('fonts/vcrosdmonorus_vhsicons.ttf') format('truetype');
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Видео фон */
+video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    opacity: 0.45; /* Прозрачность фона видео */
+}

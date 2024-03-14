@@ -10,7 +10,6 @@
     <!-- Видео фон -->
     <video autoplay loop muted>
         <source src="videos/papich.mp4" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
 
     <div id="container">
@@ -22,9 +21,9 @@
     <!-- Контейнер для остального содержимого -->
     <div id="about-me">
         <h1>DroyidEpt & DroyidRE</h1>
-        <p>Немного о себе: Бывет скучноватый, но это не беда!</p>
+        <p>Немного о себе: Бывает скучноватый, но это не беда!</p>
         <audio id="background-audio" loop autoplay>
-            <source src="audio/anarhia.mp3" type="audio/mpeg">
+            <source src="audio/anarchia-minus.mp3" type="audio/mpeg">
             <source src="audio/nakray.mp3" type="audio/mpeg">
             <source src="audio/moto.mp3" type="audio/mpeg">
             <!-- Добавьте все ваши аудиофайлы здесь, они будут поочередно проигрываться -->
@@ -41,6 +40,10 @@
     </div>
 
     <script>
+        const audio = document.getElementById('background-audio');
+        const sources = audio.getElementsByTagName('source');
+        let currentIndex = 0;
+
         // Функция для показа остального содержимого и проигрывания музыки
         function showAboutMe() {
             document.getElementById('container').style.animation = 'fadeOut 1s ease forwards'; // Анимация скрытия контейнера
@@ -48,13 +51,26 @@
                 document.getElementById('container').style.display = 'none'; // Скрываем контейнер
                 document.getElementById('about-me').style.display = 'block'; // Показываем about-me
                 document.getElementById('about-me').style.animation = 'fadeIn 3s ease forwards'; // Анимация появления about-me
-                document.getElementById('background-audio').play(); // Запускаем музыку
+                playNextAudio(); // Запускаем первый аудиофайл
             }, 1000); // Задержка, чтобы анимация скрытия прошла
+        }
+
+        // Функция для проигрывания следующего аудиофайла
+        function playNextAudio() {
+            if (currentIndex < sources.length) {
+                audio.src = sources[currentIndex].src;
+                audio.load();
+                audio.play();
+                currentIndex++;
+            } else {
+                // Если проиграны все аудиофайлы, возвращаемся к первому
+                currentIndex = 0;
+                playNextAudio();
+            }
         }
 
         // Функция для переключения звука
         function toggleAudio() {
-            const audio = document.getElementById('background-audio');
             if (audio.paused) {
                 audio.play();
             } else {

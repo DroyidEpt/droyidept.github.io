@@ -67,7 +67,7 @@ button {
     background-size: cover;
     animation: rotate 2s linear infinite;
     cursor: pointer;
-    margin-left: 290px;
+    margin-left: 275px;
 }
 
 @keyframes rotate {

@@ -63,11 +63,11 @@ button {
 .icon {
     width: 128px;
     height: 128px;
-    background-image: url('images/logos/logo.png');
+    background-image: url('images/logos/logo2.png');
     background-size: cover;
     animation: rotate 2s linear infinite;
     cursor: pointer;
-    margin-left: 275px;
+    margin-left: 255px;
 }
 
 @keyframes rotate {

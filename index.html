@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        /* Стили для фона */
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-family: 'VCR OSD Mono', monospace; /* Применяем шрифт VCR OSD Mono */
+            text-align: center;
+            opacity: 0; /* Начальное значение прозрачности */
+            animation: fadeIn 2s ease forwards; /* Анимация появления */
+        }
+
+        p {
+            font-size: 24px;
+            font-family: 'VCR OSD Mono', monospace; /* Применяем шрифт VCR OSD Mono */
+            text-align: center;
+            opacity: 0; /* Начальное значение прозрачности */
+            animation: fadeIn 2s ease forwards; /* Анимация появления */
+        }
+
+        /* Кнопка "Ок" */
+        button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: opacity 0.5s ease; /* Анимация изменения прозрачности */
+            opacity: 0; /* Начальное значение прозрачности */
+            animation: fadeIn 2s ease forwards; /* Анимация появления */
+            margin-left: 235px;
+        }
+
+        /* Стили для контейнера about-me */
+        #about-me {
+            display: none; /* Скрываем контейнер изначально */
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            text-align: center;
+            opacity: 0; /* Начальное значение прозрачности */
+            animation: fadeIn 2s ease forwards; /* Анимация появления */
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: blue;
+            color: white;
+            text-decoration: none; /* Убираем подчеркивание ссылок */
+            border-radius: 5px;
+        }
+
+        /* При наведении курсора меняем стиль ссылок */
+        .social-link:hover {
+            background-color: darkblue;
+        }
+
+        /* Стили для вращающейся иконки */
+        .icon {
+            width: 128px; /* Установите нужные размеры */
+            height: 128px;
+            background-image: url('images/logos/logo2.png'); /* Путь к вашему файлу иконки */
+            background-size: cover;
+            animation: rotate 2s linear infinite; /* Анимация вращения */
+            cursor: pointer; /* Добавляем указатель при наведении на иконку */
+            margin-left: 275px;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @font-face {
+            font-family: 'VCR OSD Mono';
+            src: url('fonts/vcrosdmonorus_vhsicons.ttf') format('truetype'); /* Путь к вашему файлу шрифта */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0; /* Начальное значение прозрачности */
+            }
+            to {
+                opacity: 1; /* Конечное значение прозрачности */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>DroyidEpt & DroyidRE</h1>
+        <p>Вы заходите на сайт! Да, интересно...</p>
+        <button onclick="showAboutMe()">Ок</button> <!-- Кнопка для запуска всех остальных элементов -->
+    </div>
+
+    <!-- Контейнер для остального содержимого -->
+    <div id="about-me">
+        <h1>DroyidEpt & DroyidRE</h1>
+        <p>Немного о себе: Бывет скучноватый, но это не беда!</p>
+        <audio id="background-audio" loop autoplay>
+            <source src="audio/anarhia.mp3" type="audio/mpeg">
+            <source src="audio/nakray.mp3" type="audio/mpeg">
+            <source src="audio/moto.mp3" type="audio/mpeg">
+            <!-- Добавьте все ваши аудиофайлы здесь, они будут поочередно проигрываться -->
+        </audio>
+        <div class="icon" onclick="toggleAudio()"></div> <!-- Добавлена иконка, которую можно нажать -->
+
+        <div class="social-links">
+            <a href="https://www.twitch.tv/" class="social-link">Twitch</a>
+            <a href="https://www.youtube.com/" class="social-link">YouTube</a>
+            <a href="https://github.com/" class="social-link">GitHub</a>
+            <a href="https://web.telegram.org/" class="social-link">Telegram</a>
+            <a href="https://discord.com/" class="social-link">Discord</a>
+        </div>
+    </div>
+
+    <script>
+        // Функция для показа остального содержимого и проигрывания музыки
+        function showAboutMe() {
+            document.getElementById('container').style.animation = 'fadeOut 1s ease forwards'; // Анимация скрытия контейнера
+            setTimeout(function() {
+                document.getElementById('container').style.display = 'none'; // Скрываем контейнер
+                document.getElementById('about-me').style.display = 'block'; // Показываем about-me
+                document.getElementById('about-me').style.animation = 'fadeIn 2s ease forwards'; // Анимация появления about-me
+                document.getElementById('background-audio').play(); // Запускаем музыку
+            }, 1000); // Задержка, чтобы анимация скрытия прошла
+        }
+
+        // Функция для переключения звука
+        function toggleAudio() {
+            const audio = document.getElementById('background-audio');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+</body>
+</html>

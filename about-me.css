@@ -1,0 +1,86 @@
+/* Стили для фона */
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Стили для контейнера с информацией */
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    font-family: 'VCR OSD Mono', monospace; /* Применяем шрифт VCR OSD Mono */
+}
+
+p {
+    font-size: 24px;
+    font-family: 'VCR OSD Mono', monospace; /* Применяем шрифт VCR OSD Mono */
+}
+
+.container {
+    text-align: center;
+    opacity: 0; /* Начальное значение непрозрачности */
+    animation: fadeIn 2s ease forwards; /* Анимация появления */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Начальное значение непрозрачности */
+    }
+    to {
+        opacity: 1; /* Конечное значение непрозрачности */
+    }
+}
+
+/* Стили для вращающейся иконки */
+.icon {
+    width: 128px; /* Установите нужные размеры */
+    height: 128px;
+    background-image: url('images/logos/logo.png'); /* Путь к вашему файлу иконки */
+    background-size: cover;
+    animation: rotate 2s linear infinite; /* Анимация вращения */
+    cursor: pointer; /* Добавляем указатель при наведении на иконку */
+    margin-left: 290px; 
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: blue;
+    color: white;
+    text-decoration: none; /* Убираем подчеркивание ссылок */
+    border-radius: 5px;
+}
+
+/* При наведении курсора меняем стиль ссылок */
+.social-link:hover {
+    background-color: darkblue;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url('fonts/vcrosdmonorus_vhsicons.ttf') format('truetype'); /* Путь к вашему файлу шрифта */
+}
